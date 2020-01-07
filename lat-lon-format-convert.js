@@ -1,20 +1,22 @@
 function convert(polygon) {
-
     var replaced = polygon.replace('POLYGON((', '').replace('))', '');
     var arr = replaced.split(',');
+    
     var cleanArr = arr.map(function(str) {
         return str.trim();
     });
+    
     var arrArr = cleanArr.map(function(params) {
         return params.split(' ').reverse();
     });
+    
     var polyString = arrArr
         .map(function(params) {
             return params.join(' ');
         }).join(',');
     var latLon = 'POLYGON((' + polyString + '))';
 
-    console.log(latLon);
+    return latLon;
 };
 
 var first =
